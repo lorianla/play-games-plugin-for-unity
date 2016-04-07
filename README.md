@@ -369,7 +369,16 @@ standard Unity social platform interface.
     using UnityEngine.SocialPlatforms;
     ...
     // authenticate user:
-    Social.localUser.Authenticate((bool success) => {
+    PlayGamesPlatform.Instance.Authenticate ((bool success) => {
+				 if (success) {
+					 Debug.Log ("You've successfully logged in");
+					 LogInfo.text = "Success";
+					 LogIn.enabled = false;
+				 } else {
+					 Debug.Log ("Login failed for some reason");
+					 LogInfo.text = "Failed";
+				 }
+			 },true);
         // handle success or failure
     });
 ```
